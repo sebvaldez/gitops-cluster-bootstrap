@@ -1,0 +1,11 @@
+# Global
+
+domain:
+
+trivy:
+  enabled: true
+logging:
+  enabled: true
+
+kube-vip:
+

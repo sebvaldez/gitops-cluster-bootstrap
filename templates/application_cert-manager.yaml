@@ -1,0 +1,14 @@
+# application_cert-manager.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  destination:
+  project: default
+  source:
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
