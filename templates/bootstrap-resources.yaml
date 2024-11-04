@@ -1,4 +1,3 @@
-# bootstrap-resources.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -10,21 +9,13 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: 'https://charts.jetstack.io'
-    targetRevision: v1.10.1
-    destination:
-      server: 'https://kubernetes.default.svc'
-      namespace: cert-manager
+    path: bootstrap-resources
+    repoURL: https://github.com/sebvaldez/gitops-cluster-bootstrap
+    targetRevision: HEAD
     helm:
       parameters:
-        - name: installCRDs
-          value: 'true'
-        - name: prometheus.servicemonitor.enabled
-          value: 'false'
-        - name: prometheus.servicemonitor.honorLabels
-          value: 'false'
-      chart: cert-manager
   syncPolicy:
-    automated: {}
+    automated:
+      selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true

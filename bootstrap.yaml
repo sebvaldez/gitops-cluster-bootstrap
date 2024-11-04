@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: .
-    repoURL: https://github.com/sebvaldez/gitops-kubernetes-bootstrap
+    path: bootstrap-resources
+    repoURL: https://github.com/sebvaldez/gitops-cluster-bootstrap
     targetRevision: HEAD
   syncPolicy:
     automated:
