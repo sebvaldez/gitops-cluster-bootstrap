@@ -15,7 +15,16 @@ spec:
   source:
     repoURL: 'https://kube-vip.github.io/helm-charts/'
     targetRevision: v0.6.1
-    chart: kube-vip
+    namespace: kube-system
+  values:
+    configuration:
+      vip: "10.15.1.90"        # Define your VIP here
+      interface: "eth0"        # Specify the network interface
+      gateway: "10.15.1.1"     # Define the gateway
+      arp: true
+      leaderElection: true
+    rbac:
+      create: true
   syncPolicy:
     automated: {}
     syncOptions:
