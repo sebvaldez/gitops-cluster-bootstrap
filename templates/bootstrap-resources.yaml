@@ -12,10 +12,6 @@ spec:
     path: bootstrap-resources
     repoURL: https://github.com/sebvaldez/gitops-cluster-bootstrap
     targetRevision: HEAD
-    helm:
-      parameters:
-        - name: bootrap-resources-file
-          value: true
   syncPolicy:
     automated:
       selfHeal: true
