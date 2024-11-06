@@ -1,2 +1,22 @@
----
-# kube-vip application def
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-vip
+  namespace: kube-vip
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://kube-vip.github.io/helm-charts/'
+    chart: kube-vip
+    targetRevision: v0.6.1
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: kube-vip
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
