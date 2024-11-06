@@ -1,5 +1,7 @@
 # Global
 
+repoURL: file://Users/sebastianvaldez/personal_code/gitops-cluster-bootstrap
+
 domain:
 
 trivy:

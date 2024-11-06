@@ -1,7 +1,7 @@
 # Notes
 
 # create a minikube cluster
-minikube start --cpus=4 --memory=8192
+minikube start --cpus=4 --memory=8192 --profile=bootstrap-sbx
 
 ( there was an error in the storage-provisioner )
 # version its creating: k8s version: 1.30.0
@@ -11,11 +11,14 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 
+# Wait for Argocd to be health
+k get deploy -n argocd
+
 # Get initial login secret
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode; echo
 
 # ex:
-Fy3OmqNPDnrhXU2M
+Z4wLZT8lyGPxs4L1
 
 # enable argocd ui
 >By default, the Argo CD API server is not exposed with an external IP. To access the API server, choose one of the following techniques to expose the Argo CD API server:
@@ -42,7 +45,9 @@ argoui() {
     fi
 }
 ```
-
+# UI located at:
+http://localhost:8080
+admin and pw
 
 
 # Deploy bootstrap cluster
@@ -52,3 +57,15 @@ argoui() {
 
 k apply -f bootstrap.yaml
 
+# tutorial on k9s helped me refresh a little bit
+
+
+# Notes - i need to get things up
+
+# Clear cluster
+k delete -f bootstrap.yaml
+
+minikube start --profile=bootstrap-sbx
+minikube stop --profile=bootstrap-sbx
+
+minikube stop && minikube delete --all --purge
