@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: 'https://traefik.github.io/charts'
     targetRevision: v22.0.0
-    namespace: traefik
+    chart: traefik
   values:
   syncPolicy:
     automated: {}
