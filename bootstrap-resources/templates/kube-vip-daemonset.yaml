@@ -20,6 +20,7 @@ spec:
           image: ghcr.io/kube-vip/kube-vip:latest
           args:
             - "manager"  # Use 'manager' command instead of 'start'
+            - "--controlplane"
           envFrom:
             - configMapRef:
                 name: kube-vip-config
