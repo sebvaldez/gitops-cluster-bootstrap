@@ -11,24 +11,34 @@ spec:
   project: default
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: kube-system  # kube-vip usually runs in the kube-system namespace
+    namespace: kube-system
   source:
     repoURL: 'https://kube-vip.github.io/helm-charts'
     targetRevision: v0.6.1
     chart: kube-vip
-    # Here we hard-code the Helm values as per the kube-vip Helm chart requirements
-    values: |
-      # Configuring kube-vip to run in control plane mode with a VIP
-      configuration:
-        vip: "10.15.1.90"               # Specify the VIP here
-        interface: "eth0"               # Specify the network interface
-        gateway: "10.15.1.1"            # Define the gateway for the VIP
-        arp: true                       # Enable ARP broadcasts
-        leaderElection: true            # Enable leader election for HA
-        enableControlPane: true         # Enable control plane mode for managing VIP
-      prometheus:
-        enabled: false                  # Disable Prometheus to avoid port conflicts
-      rbac:
-        create: true                    # Enable RBAC permissions for kube-vip
-      daemonset:
-        enabled: true                   # Deploy kube-vip as a DaemonSet
+    helm:
+      parameters:
+        - name: rbac.create
+          value: "true"
+        - name: daemonset.enabled
+          value: "true"
+        - name: configuration.vip
+          value: "10.15.1.90"
+        - name: configuration.interface
+          value: "eth0"
+        - name: configuration.arp
+          value: "true"
+        - name: configuration.controlplane
+          value: "true"
+        - name: configuration.services.enabled
+          value: "false"
+        - name: configuration.prometheus.enabled
+          value: "false"
+        # - name: image.repository
+        #   value: "ghcr.io/kube-vip/kube-vip"
+        # - name: image.tag
+        #   value: "v0.8.5"
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
