@@ -15,6 +15,7 @@ spec:
   source:
     repoURL: 'https://kube-vip.github.io/helm-charts'
     targetRevision: v0.6.1
+    chart: kube-vip
     namespace: kube-system
   syncPolicy:
     automated: {}
