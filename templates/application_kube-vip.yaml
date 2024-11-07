@@ -11,12 +11,16 @@ spec:
   project: default
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: kube-vip
+    namespace: kube-system  # Set to 'kube-system' instead of 'kube-vip' for consistency
   source:
     repoURL: 'https://kube-vip.github.io/helm-charts'
     targetRevision: v0.6.1
     chart: kube-vip
-    namespace: kube-system
+  values:
+    daemonset:
+      enabled: false    # Disable the default DaemonSet if it exists
+    deployment:
+      enabled: false    # Disable the default Deployment if it exists
   syncPolicy:
     automated: {}
     syncOptions:
