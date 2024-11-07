@@ -16,11 +16,6 @@ spec:
     repoURL: 'https://kube-vip.github.io/helm-charts'
     targetRevision: v0.6.1
     chart: kube-vip
-  values:
-    daemonset:
-      enabled: false    # Disable the default DaemonSet if it exists
-    deployment:
-      enabled: false    # Disable the default Deployment if it exists
   syncPolicy:
     automated: {}
     syncOptions:

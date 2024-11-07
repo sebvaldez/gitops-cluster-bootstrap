@@ -2,11 +2,10 @@
 
 kube-vip:
   configuration:
-    vip: "10.15.1.90"         # Define the VIP for kube-vip
-    interface: "eth0"          # Network interface to bind VIP
-    gateway: "10.15.1.1"       # Gateway for the VIP
-    arp: "true"                # Enable ARP broadcasting
-    leaderElection: "true"     # Enable leader election for HA
-    controlplane: "true"       # Enable kube-vip control plane mode
+    vip_arp: "true"                 # Enable ARP broadcasting
+    vip_leaderelection: "true"      # Enable leader election for HA
+    vip_interface: "eth0"              # Network interface to bind VIP
+    vip_address: "10.15.1.90"           # Define the VIP for kube-vip
+    vip_gateway: "10.15.1.1"         # Gateway for the VIP
   rbac:
     create: true               # Enable RBAC permissions for leader election
