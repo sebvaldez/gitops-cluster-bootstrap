@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: kube-vip
   source:
-    repoURL: 'https://kube-vip.github.io/helm-charts/'
+    repoURL: 'https://kube-vip.github.io/helm-charts'
     targetRevision: v0.6.1
     namespace: kube-system
   syncPolicy:

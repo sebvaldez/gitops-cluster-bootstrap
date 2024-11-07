@@ -4,6 +4,6 @@ metadata:
   name: kube-vip-config
   namespace: kube-system
 data:
-{{- range $key, $value := .Values.kube-vip.configuration }}
+{{- range $key, $value := index .Values "kube-vip" "configuration" }}
   {{ $key }}: "{{ $value }}"
 {{- end }}
