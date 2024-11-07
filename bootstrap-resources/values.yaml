@@ -1,13 +1,12 @@
 # bootstrap-resources/values.yaml
 
 kube-vip:
-  # General kube-vip settings
   configuration:
-    vip: "10.15.1.90"  # The virtual IP to be assigned by kube-vip
-    interface: "eth0"  # Replace with the appropriate network interface
-    gateway: "10.15.1.1"  # Define the gateway for the virtual IP
-    # Enable ARP and leader election for high availability
-    arp: true
-    leaderElection: true
+    vip: "10.15.1.90"         # Define the VIP for kube-vip
+    interface: "eth0"          # Network interface to bind VIP
+    gateway: "10.15.1.1"       # Gateway for the VIP
+    arp: "true"                # Enable ARP broadcasting
+    leaderElection: "true"     # Enable leader election for HA
+    controlplane: "true"       # Enable kube-vip control plane mode
   rbac:
-    create: true  # Enable RBAC permissions for kube-vip
+    create: true               # Enable RBAC permissions for leader election
