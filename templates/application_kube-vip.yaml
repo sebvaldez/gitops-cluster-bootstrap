@@ -18,15 +18,17 @@ spec:
     chart: kube-vip
     helm:
       parameters:
-        - name: env.cp_enable
-          values: "true"
-        - name: config.address
-          value: "10.15.1.90"
-        - name: vip_leaderelection
+        - name: extraArgs.controlplane
           value: "true"
-        - name: env.vip_interface
+        - name: extraArgs.inCluster
+          value: "true"
+        - name: extraArgs.taint
+          value: "true"
+        - name: extraArgs.address
+          value: "10.15.1.90"
+        - name: extraArgs.interface
           value: "eth0"
-        - name: env.vip_gateway
+        - name: extraArgs.gateway
           value: "10.15.1.1"
   syncPolicy:
     automated: {}
