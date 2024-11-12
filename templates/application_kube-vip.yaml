@@ -13,9 +13,9 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: kube-system
   source:
-    repoURL: 'https://kube-vip.github.io/helm-charts'
-    targetRevision: v0.8.4
-    chart: kube-vip
+    repoURL: 'https://github.com/kube-vip/helm-charts.git'  # GitHub repo URL
+    targetRevision: 'v0.8.4'  # Git tag or branch for the version
+    path: charts/kube-vip  # Path to the chart within the repository
     helm:
       parameters:
         - name: extraArgs.controlplane
@@ -26,6 +26,8 @@ spec:
           value: "eth0"
         - name: extraArgs.arp
           value: "true"
+        - name: image.tag  # Explicitly set the image version if needed
+          value: "v0.8.4"
   syncPolicy:
     automated: {}
     syncOptions:
