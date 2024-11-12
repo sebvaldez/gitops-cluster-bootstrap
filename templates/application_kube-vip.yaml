@@ -20,8 +20,6 @@ spec:
       parameters:
         - name: extraArgs.controlplane
           value: "true"
-        - name: extraArgs.taint
-          value: "true"
         - name: extraArgs.address
           value: "10.15.1.90"
         - name: extraArgs.interface
