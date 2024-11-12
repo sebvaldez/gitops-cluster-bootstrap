@@ -14,7 +14,7 @@ spec:
     namespace: kube-system
   source:
     repoURL: 'https://kube-vip.github.io/helm-charts'
-    targetRevision: v0.6.1
+    targetRevision: v0.8.6
     chart: kube-vip
     helm:
       parameters:
