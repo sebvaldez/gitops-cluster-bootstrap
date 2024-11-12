@@ -34,10 +34,8 @@ spec:
           value: "false"
         - name: configuration.prometheus.enabled
           value: "false"
-        # - name: image.repository
-        #   value: "ghcr.io/kube-vip/kube-vip"
-        # - name: image.tag
-        #   value: "v0.8.5"
+        - name: extraArgs.vip
+          value: "10.15.1.90"
   syncPolicy:
     automated: {}
     syncOptions:
