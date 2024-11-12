@@ -28,8 +28,6 @@ spec:
           value: "10.15.1.90"
         - name: extraArgs.interface
           value: "eth0"
-        - name: extraArgs.gateway
-          value: "10.15.1.1"
   syncPolicy:
     automated: {}
     syncOptions:
