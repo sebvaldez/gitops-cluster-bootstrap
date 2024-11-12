@@ -14,7 +14,7 @@ spec:
     namespace: kube-system
   source:
     repoURL: 'https://github.com/kube-vip/helm-charts.git'  # GitHub repo URL
-    targetRevision: 'v0.8.4'  # Git tag or branch for the version
+    targetRevision: 'a4591b2944de46b8206cdaa6a1a43dce4a09ac5f' # 'v0.8.4' tag
     path: charts/kube-vip  # Path to the chart within the repository
     helm:
       parameters:
