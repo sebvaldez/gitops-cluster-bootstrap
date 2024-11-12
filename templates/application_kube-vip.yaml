@@ -18,24 +18,16 @@ spec:
     chart: kube-vip
     helm:
       parameters:
-        - name: rbac.create
+        - name: kube-vip.toBool
           value: "true"
-        - name: daemonset.enabled
+        - name: kube-vip.serviceAccount
           value: "true"
-        - name: configuration.vip
+        - name: env.cp_enable
+          values: "true"
+        - name: config.address
           value: "10.15.1.90"
-        - name: configuration.interface
-          value: "eth0"
-        - name: configuration.arp
-          value: "true"
-        - name: configuration.controlplane
-          value: "true"
-        - name: configuration.services.enabled
-          value: "false"
-        - name: configuration.prometheus.enabled
-          value: "false"
-        - name: extraArgs.vip
-          value: "10.15.1.90"
+        - name: env.vip_gateway
+          value: "10.15.1.1"
   syncPolicy:
     automated: {}
     syncOptions:
