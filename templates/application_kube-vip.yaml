@@ -20,7 +20,7 @@ spec:
         - name: env.vip_leaderelection
           value: 'true'
         - name: env.vip_interface
-          value: eth0@if58
+          value: eth0
   sources: []
   project: default
   syncPolicy:
