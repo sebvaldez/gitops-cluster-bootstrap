@@ -2,33 +2,27 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kube-vip
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: kube-system
+    name: ''
+    namespace: kube-vip
+    server: https://kubernetes.default.svc
   source:
-    repoURL: 'https://github.com/kube-vip/helm-charts.git'  # GitHub repo URL
-    targetRevision: 'a4591b2944de46b8206cdaa6a1a43dce4a09ac5f' # 'v0.8.4' tag
-    path: charts/kube-vip  # Path to the chart within the repository
+    path: charts/kube-vip
+    repoURL: https://github.com/kube-vip/helm-charts
+    targetRevision: kube-vip-0.8.4
     helm:
       parameters:
-        - name: extraArgs.controlplane
-          value: "true"
-        - name: extraArgs.address
-          value: "10.15.1.90"
-        - name: extraArgs.interface
-          value: "eth0"
-        - name: extraArgs.arp
-          value: "true"
-        - name: image.tag  # Explicitly set the image version if needed
-          value: "v0.8.4"
+        - name: config.address
+          value: 10.15.1.90
+        - name: env.cp_enable
+          value: 'true'
+        - name: env.vip_leaderelection
+          value: 'true'
+        - name: env.vip_interface
+          value: eth0@if58
+  sources: []
+  project: default
   syncPolicy:
-    automated: {}
     syncOptions:
       - CreateNamespace=true
