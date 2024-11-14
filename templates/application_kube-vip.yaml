@@ -14,14 +14,13 @@ spec:
     helm:
       parameters:
         - name: config.address
-          value: 10.15.1.90
+          value: 10.15.50.100
         - name: env.cp_enable
           value: 'true'
         - name: env.vip_leaderelection
           value: 'true'
         - name: env.vip_interface
           value: eth0
-  sources: []
   project: default
   syncPolicy:
     syncOptions:
