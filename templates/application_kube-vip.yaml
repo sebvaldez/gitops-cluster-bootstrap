@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kube-vip
-  namespace: argocd
+  namespace: kube-vip
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   finalizers:
@@ -20,32 +20,24 @@ spec:
       parameters:
         - name: config.address
           value: 10.15.50.90
-        - name: config.interface
+        - name: env.vip_interface
           value: eth0
-        - name: config.vip_leaderelection
+        - name: env.vip_leaderelection
           value: 'true'
-        - name: config.cp_enable
+        - name: env.cp_enable
           value: 'true'
-        - name: config.svc_enable
-          value: 'true'
-        - name: config.vip_arp
-          value: 'true'
-        - name: config.lb_port
-          value: '6443'
-        - name: config.vip_cidr
-          value: '32'
         - name: config.vip_leaseduration
           value: '5'
         - name: config.vip_renewdeadline
           value: '3'
         - name: config.vip_retryperiod
           value: '1'
-        - name: config.prometheus_server
-          value: ':2112'
         - name: image.tag
           value: v0.8.4
+        - name: serviceAccount.name
+          value: kube-vip
+  sources: []
   project: default
-  values:
   syncPolicy:
     automated: {}
     syncOptions:
