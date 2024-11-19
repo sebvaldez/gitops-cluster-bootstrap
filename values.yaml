@@ -1,13 +1,11 @@
 # Global
+global:
+  repoURL: file://Users/sebastianvaldez/personal_code/gitops-cluster-bootstrap
+  kube-vip:
+    enabled: true
+  cert-manager:
+    enabled: false
+  traefik:
+    enabled: false
 
-repoURL: file://Users/sebastianvaldez/personal_code/gitops-cluster-bootstrap
-
-domain:
-
-trivy:
-  enabled: true
-logging:
-  enabled: true
-
-kube-vip:
 

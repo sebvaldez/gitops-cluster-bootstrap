@@ -1,11 +1,1 @@
-# bootstrap-resources/values.yaml
-
-kube-vip:
-  configuration:
-    vip_arp: "true"                 # Enable ARP broadcasting
-    vip_leaderelection: "true"      # Enable leader election for HA
-    vip_interface: "eth0"              # Network interface to bind VIP
-    vip_address: "10.15.1.90"           # Define the VIP for kube-vip
-    vip_gateway: "10.15.1.1"         # Gateway for the VIP
-  rbac:
-    create: true               # Enable RBAC permissions for leader election
+# bootstrap-resources values.yaml
