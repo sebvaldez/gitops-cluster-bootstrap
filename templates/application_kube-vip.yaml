@@ -6,15 +6,16 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: kube-system
+    name: ''
+    namespace: kube-vip
     server: https://kubernetes.default.svc
   source:
+    path: charts/kube-vip
     repoURL: https://github.com/kube-vip/helm-charts
-    chart: kube-vip
-    targetRevision: 0.8.4
+    targetRevision: kube-vip-0.8.4
     helm:
       parameters:
         - name: config.address
@@ -44,6 +45,7 @@ spec:
         - name: image.tag
           value: v0.8.4
   project: default
+  values:
   syncPolicy:
     automated: {}
     syncOptions:
