@@ -2,26 +2,49 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kube-vip
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    name: ''
-    namespace: kube-vip
+    namespace: kube-system
     server: https://kubernetes.default.svc
   source:
-    path: charts/kube-vip
     repoURL: https://github.com/kube-vip/helm-charts
-    targetRevision: kube-vip-0.8.4
+    chart: kube-vip
+    targetRevision: 0.8.4
     helm:
       parameters:
         - name: config.address
-          value: 10.15.50.100
-        - name: env.cp_enable
-          value: 'true'
-        - name: env.vip_leaderelection
-          value: 'true'
-        - name: env.vip_interface
+          value: 10.15.50.90
+        - name: config.interface
           value: eth0
+        - name: config.vip_leaderelection
+          value: 'true'
+        - name: config.cp_enable
+          value: 'true'
+        - name: config.svc_enable
+          value: 'true'
+        - name: config.vip_arp
+          value: 'true'
+        - name: config.lb_port
+          value: '6443'
+        - name: config.vip_cidr
+          value: '32'
+        - name: config.vip_leaseduration
+          value: '5'
+        - name: config.vip_renewdeadline
+          value: '3'
+        - name: config.vip_retryperiod
+          value: '1'
+        - name: config.prometheus_server
+          value: ':2112'
+        - name: image.tag
+          value: v0.8.4
   project: default
   syncPolicy:
+    automated: {}
     syncOptions:
       - CreateNamespace=true
