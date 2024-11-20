@@ -5,13 +5,13 @@ global:
   kube-vip:
     enabled: true
     image_tag: v0.8.4
-    cp_enable: true
+    cp_enable: "true"
     vip_address: 10.15.50.90
     vip_interface: eth0
-    vip_leaderelection: true
-    vip_leaseduration: 5
-    vip_renewdeadline: 3
-    vip_retryperiod: 1
+    vip_leaderelection: "true"
+    vip_leaseduration: "5"
+    vip_renewdeadline: "3"
+    vip_retryperiod: "1"
 
   cert-manager:
     enabled: false
