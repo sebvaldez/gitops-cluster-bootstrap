@@ -9,7 +9,7 @@ metadata:
 spec:
   destination:
     namespace: kube-system
-    server: https://kubernetes.default.svc
+    server: {{ .Values.global.cluster }}
   source:
     repoURL: https://github.com/kube-vip/helm-charts
     targetRevision: kube-vip-0.8.4

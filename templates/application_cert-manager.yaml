@@ -11,7 +11,7 @@ metadata:
 spec:
   project: default
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: {{ .Values.global.cluster }}
     namespace: cert-manager
   source:
     repoURL: 'https://charts.jetstack.io'
