@@ -1,5 +1,6 @@
 # Global
 global:
+  cluster: "https://kubernetes.default.svc"
   repoURL: file://Users/sebastianvaldez/personal_code/gitops-cluster-bootstrap
 
   kube-vip:
@@ -13,10 +14,26 @@ global:
     vip_renewdeadline: "'3'"
     vip_retryperiod: "'1'"
 
+# Still tuning below:
   cert-manager:
-    enabled: false
+    enabled: true
+
   traefik:
     enabled: true
     targetRevision: v22.0.0
 
+  pihole:
+    enabled: false
+    vip_address: 10.15.50.91 # exposed via kube-vip and svc loadbalancer
+  unboundDns:
+    enabled: false
+    vip_address: 10.15.50.92 # exposed via kube-vip and svc loadbalancer
 
+  prometheus:
+    enabled: false
+  grafana:
+    enabled: false
+  authentik:
+    enabled: false
+  vault:
+    enabled: false
