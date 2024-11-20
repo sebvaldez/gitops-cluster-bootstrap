@@ -16,6 +16,7 @@ global:
   cert-manager:
     enabled: false
   traefik:
-    enabled: false
+    enabled: true
+    targetRevision: v22.0.0
 
 

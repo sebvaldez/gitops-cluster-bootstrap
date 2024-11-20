@@ -13,13 +13,12 @@ spec:
     namespace: traefik
   source:
     repoURL: 'https://traefik.github.io/charts'
-    targetRevision: v22.0.0
+    targetRevision: {{ index .Values "global" "traefik" "targetRevision" }}
     chart: traefik
-  values:
   syncPolicy:
-    automated: {}
-  syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
 {{- end}}
