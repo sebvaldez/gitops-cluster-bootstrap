@@ -17,21 +17,21 @@ spec:
     helm:
       parameters:
         - name: config.address
-          value: 10.15.50.90
+          value: {{ index .Values "global" "kube-vip" "vip_address" }}
         - name: env.vip_interface
-          value: eth0
+          value: {{ index .Values "global" "kube-vip" "vip_interface" }}
         - name: env.vip_leaderelection
-          value: 'true'
+          value: {{ index .Values "global" "kube-vip" "vip_leaderelection" }}
         - name: env.cp_enable
-          value: 'true'
+          value: {{ index .Values "global" "kube-vip" "cp_enable" }}
         - name: config.vip_leaseduration
-          value: '5'
+          value: {{ index .Values "global" "kube-vip" "vip_leaseduration" }}
         - name: config.vip_renewdeadline
-          value: '3'
+          value: {{ index .Values "global" "kube-vip" "vip_renewdeadline" }}
         - name: config.vip_retryperiod
-          value: '1'
+          value: {{ index .Values "global" "kube-vip" "vip_retryperiod" }}
         - name: image.tag
-          value: v0.8.4
+          value: {{ index .Values "global" "kube-vip" "image_tag" }}
   sources: []
   project: default
   syncPolicy:
