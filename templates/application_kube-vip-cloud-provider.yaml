@@ -17,7 +17,7 @@ spec:
     helm:
       parameters:
         - name: cm.data
-          value: {{ index .Values "global" "kube-vip-provider" "cm" "data" }}
+          value: {{ index .Values "global" "kube-vip-cloud-provider" "cm" "data" }}
   sources: []
   project: default
   syncPolicy:
