@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
   destination:
-    namespace: kube-system
+    namespace: kube-vip
     server: {{ .Values.global.cluster }}
   source:
     repoURL: https://github.com/kube-vip/helm-charts
