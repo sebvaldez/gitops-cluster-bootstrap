@@ -14,6 +14,12 @@ global:
     vip_renewdeadline: "'3'"
     vip_retryperiod: "'1'"
 
+  kube-vip-cloud-provider:
+    enabled: true
+    cm:
+      data:
+        cidr-infra: 10.15.50.93/24
+
 # Still tuning below:
   cert-manager:
     enabled: true
@@ -21,19 +27,36 @@ global:
   traefik:
     enabled: true
     targetRevision: v22.0.0
+    # vip_address: 10.15.50.91 I
+
+  externalDNS:
+    enabled: false
+    # used to dynamically manage dns records for k8s services
+
+  istio:
+    enabled: false
+    # TBD
 
   pihole:
     enabled: false
-    vip_address: 10.15.50.91 # exposed via kube-vip and svc loadbalancer
+    # TBD expose this IP or not.
+    vip_address: 10.15.50.92 # exposed via kube-vip and svc loadbalancer
   unboundDns:
     enabled: false
-    vip_address: 10.15.50.92 # exposed via kube-vip and svc loadbalancer
+    vip_address: 10.15.50.93 # exposed via kube-vip and svc loadbalancer
 
   prometheus:
     enabled: false
+    # Use this for log collection
   grafana:
     enabled: false
+    # Use this for service & cluster health viz
   authentik:
     enabled: false
+    # Use this for OIDC for Argo / all other applications.
   vault:
     enabled: false
+    # Use this for secret management
+  homeAssistant:
+    enabled: false
+    # Use this for home automation

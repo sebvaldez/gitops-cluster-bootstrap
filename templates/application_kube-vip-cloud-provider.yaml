@@ -1,0 +1,29 @@
+{{- if index .Values "global" "kube-vip-cloud-provider" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-vip-cloud-provider
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  destination:
+    namespace: kube-system
+    server: {{ .Values.global.cluster }}
+  source:
+    repoURL: https://github.com/kube-vip/helm-charts
+    targetRevision: kube-vip-0.8.4
+    path: charts/kube-vip-cloud-provider
+    helm:
+      parameters:
+        - name: cm.data
+          value: {{ index .Values "global" "kube-vip-provider" "cm" "data" }}
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}
