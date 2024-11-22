@@ -18,7 +18,7 @@ global:
     enabled: true
     cm:
       data:
-        cidr-infra: 10.15.50.93/24
+        cidr-infra: "10.15.50.93/24"
 
 # Still tuning below:
   cert-manager:
