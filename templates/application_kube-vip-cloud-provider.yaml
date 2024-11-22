@@ -16,8 +16,10 @@ spec:
     path: charts/kube-vip-cloud-provider
     helm:
       parameters:
-        - name: cm.data
-          value: {{ index .Values "global" "kube-vip-cloud-provider" "cm" "data" }}
+      {{- range $key, $value := index .Values "global" "kube-vip-cloud-provider" "cm" "data" }}
+        - name: cm.data.{{ $key }}
+          value: {{ $value | quote }}
+      {{- end }}
   sources: []
   project: default
   syncPolicy:
